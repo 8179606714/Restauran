@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .signup-container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 370px;
+      text-align: center;
+    }
+
+    .signup-container h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      color: #555;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      background: #185a9d;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #0f4c81;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+    
+
+    .login-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-link a {
+      color: #185a9d;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>Create Account</h2>
+    <div class="input-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="Enter your name" />
+      <div class="error" id="nameError"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" />
+      <div class="error" id="emailError"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password" />
+      <div class="error" id="passError"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm password" />
+      <div class="error" id="confirmError"></div>
+    </div>
+
+    <button class="btn" onclick="signUp()">Sign Up</button>
+    
+
+    <div class="login-link">
+      Already have an account? <a href="Naveen.html">Login</a>
+      
+             </div>
+             
+             <div class="Back-link">
+    <a href="C:\Naveen\feane-1.0.0\index.html">Back To Page</a>
+  </div>
+
+  <script>
+    function signUp() {
+      let name = document.getElementById('fullname').value.trim();
+      let email = document.getElementById('email').value.trim();
+      let password = document.getElementById('password').value.trim();
+      let confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+      // Clear old errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('passError').textContent = '';
+      document.getElementById('confirmError').textContent = '';
+
+      // Validation
+      let valid = true;
+
+      if (name === '') {
+        document.getElementById('nameError').textContent = 'Full name is required';
+        valid = false;
+      }
+
+      if (email === '') {
+        document.getElementById('emailError').textContent = 'Email is required';
+        valid = false;
+      } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+        document.getElementById('emailError').textContent = 'Invalid email address';
+        valid = false;
+      }
+
+      if (password.length < 6) {
+        document.getElementById('passError').textContent = 'Password must be at least 6 characters';
+        valid = false;
+      }
+
+      if (confirmPassword !== password) {
+        document.getElementById('confirmError').textContent = 'Passwords do not match';
+        valid = false;
+      }
+
+      if (valid) {
+        alert('✅ Account created successfully!');
+        // You can redirect or save data here:
+        // localStorage.setItem("userEmail", email);
+        // window.location.href = "login.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+

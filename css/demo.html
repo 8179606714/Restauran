@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product {
+      background: #fff;
+      padding: 15px;
+      width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .product p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .product button {
+      background-color: #28a745;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #218838;
+    }
+
+    #cart {
+      margin-top: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #cart ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #cart li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding: 8px 0;
+    }
+
+    #cart-total {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛍️ Simple Add to Cart</h1>
+
+  <div class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150" alt="Product 1">
+      <h3>Delicious Pizza</h3>
+      <p>Price: ₹250</p>
+      <button onclick="addToCart('Delicious Pizza', 250)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150" alt="Product 2">
+      <h3>Cheesy Burger</h3>
+      <p>Price: ₹180</p>
+      <button onclick="addToCart('Cheesy Burger', 180)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150" alt="Product 3">
+      <h3>Chocolate Cake</h3>
+      <p>Price: ₹120</p>
+      <button onclick="addToCart('Chocolate Cake', 120)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <div id="cart-total">Total: ₹0</div>
+  </div>
+
+  <script>
+    const cart = [];
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} — ₹${item.price}`;
+        cartItems.appendChild(li);
+        total += item.price;
+      });
+
+      cartTotal.textContent = `Total: ₹${total}`;
+    }
+  </script>
+
+</body>
+</html>
